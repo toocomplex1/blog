@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #https://github.com/norman/friendly_id
 gem 'friendly_id', '~> 5.1.0'
 
+# For login and signup
 gem 'devise'
 gem 'annotate'
 
@@ -40,13 +41,17 @@ gem 'annotate'
 
 gem 'haml-rails', '>= 0.3.4', :group => :development
 gem "twitter-bootstrap-rails"
+
+# To paginate a homepage
 gem 'will_paginate', '~> 3.1.0'
 gem 'kaminari'
+# To add tags to articles 
 gem 'acts-as-taggable-on', '~> 3.4'
+# To upload a blog image
 gem "paperclip"
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
   
   gem 'byebug'
   gem 'erb2haml'
