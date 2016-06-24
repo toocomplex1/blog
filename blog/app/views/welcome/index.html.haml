@@ -1,5 +1,17 @@
-.container
-  .jumbotron
-    %h1 Welcome to toocomplex1 blog!
-.container.container-fluid
-  = link_to 'My Blog', {controller: :articles}, {class: "btn btn-primary btn-lg pull-right"}
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{:href => ""} Home
+    %ul.nav.navbar-nav
+      %li.active
+        %a{:href => "/articles"} Collections
+    %p.navbar-text.navbar-right
+      Signed in as
+      %a.navbar-link{:href => "#"} Mark Otto
+    %ul.nav.navbar-nav.navbar-right
+      %li.active
+        = link_to "Logout", destroy_user_session_path, method: :delete
+      
+.jumbotron
+  %h1 Welcome to toocomplex1 blog!
+   

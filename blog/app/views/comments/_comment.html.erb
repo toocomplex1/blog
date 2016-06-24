@@ -1,0 +1,22 @@
+<div class="panel panel-default arrow left">
+  <div class="panel-body">
+    <header class="text-left">
+      <div class="comment-user"><i class="fa fa-user"></i> <%= comment.commenter %>
+      </div>
+    </header>
+    
+    <div class="comment-post">
+      <p>
+         :
+          <%= comment.body %>
+      </p>
+    </div> 
+    
+    <p>
+      <%= link_to 'Destroy Comment', [comment.article, comment],
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+    </p>
+  </div>
+ </div>
+ 
