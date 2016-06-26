@@ -4,7 +4,17 @@ class ArticlesController < ApplicationController
   #just checking
 
   def index
-    @articles = Article.all
+
+    #without pagination
+    #@articles = Article.all
+
+    #for pagination it is fetching pagination one by one
+    @articles = Article.paginate(:page => params[:page], :per_page => 3 )
+
+    # or, use an explicit "per page" limit:
+    #Post.paginate(:page => params[:page], :per_page => 30)
+
+    ## render page links in the view: 
   end
 
   def show
@@ -29,12 +39,15 @@ class ArticlesController < ApplicationController
   def create
   @article = Article.new(article_params)
  
-  if @article.save
-    redirect_to @article
-  else
-    render 'new'
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
     end
   end
+
+  
+
   def update
   @article = Article.find(params[:id])
     if @article.update(article_params)
@@ -46,6 +59,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :tag_list)
   end
 end

@@ -49,10 +49,6 @@ Rails.application.configure do
    # :enable_starttls_auto => true # I don't have this, but it should work anyway 
  }
 
-  
-  
-
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
-

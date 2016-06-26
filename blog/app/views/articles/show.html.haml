@@ -3,6 +3,7 @@
     .blog-header
       %h1.blog-title= @article.title
       %p.lead.blog-description= @article.text
+      = render @article.tags
       %h5 Comments
       = render @article.comments
       %h5 Add a comment:

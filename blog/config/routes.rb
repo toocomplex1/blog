@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   
+  resources :articles
+  resources :tags, only: [:index, :show]
 
   resources :articles do
     resources :comments
@@ -119,4 +121,3 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
-
