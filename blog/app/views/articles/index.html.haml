@@ -16,13 +16,33 @@
 
 = javascript_include_tag "application"
  
-//= will_paginate @collection, renderer: BootstrapPagination::Rails 
-//@posts = Article.paginate(:page => params[:page])
 
 
 
 .add-article-container
   = link_to 'Add a New article', new_article_path, class: "btn btn-primary"
+
+// to search from collections page also
+= search_form_for @q, :url => url_for(:controller => 'articles', :action => 'index') do |f|
+
+  = f.label :title_cont
+  = f.search_field :title_cont
+  = f.submit
+
+%nav.navbar.navbar-inverse
+  .container-fluid
+  
+      
+    %ul.nav.navbar-nav
+      %li.active
+        = sort_link(@q, :created_at) 
+      %li.active
+        = sort_link(@q, :title) 
+      %li.active
+        = sort_link(@q, :title) 
+   
+
+
 
 .table-responsive
   %table.table.table-hover
@@ -36,6 +56,8 @@
           = article.title
         %td
           = article.text
+        %td
+          = render article.tags
         %td
           = article.created_at
         %td

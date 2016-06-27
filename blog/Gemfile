@@ -48,6 +48,9 @@ gem "paperclip"
 #paginate page using bootstrap
 gem 'will_paginate-bootstrap'
 
+#for implementing search query
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   

@@ -9,8 +9,11 @@ class ArticlesController < ApplicationController
     #@articles = Article.all
 
     #for pagination it is fetching pagination one by one
-    @articles = Article.paginate(:page => params[:page], :per_page => 3 )
-
+    #@articles = Article.paginate(:page => params[:page], :per_page => 3 )
+    
+    #for searching articles by name from collection page also
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).page(params[:page]).per_page(3)
     # or, use an explicit "per page" limit:
     #Post.paginate(:page => params[:page], :per_page => 30)
 
