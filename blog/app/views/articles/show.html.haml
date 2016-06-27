@@ -6,6 +6,9 @@
       = render @article.tags
       %h5 Comments
       = render @article.comments
+      %h5 poster
+      = image_tag @article.poster.url(:thumb) 
+
       %h5 Add a comment:
       = render 'comments/form'
       = link_to 'Edit', edit_article_path(@article)

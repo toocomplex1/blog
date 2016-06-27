@@ -13,7 +13,8 @@ class ArticlesController < ApplicationController
     
     #for searching articles by name from collection page also
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true).page(params[:page]).per_page(3)
+    # @articles = @q.result(distinct: true).page(params[:page]).per_page(3)
+    @articles = @q.result(distinct: true).includes(:tags).page(params[:page]).per_page(3)
     # or, use an explicit "per page" limit:
     #Post.paginate(:page => params[:page], :per_page => 30)
 
@@ -61,6 +62,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :tag_list)
+    params.require(:article).permit(:title, :text, :tag_list,:poster)
   end
 end

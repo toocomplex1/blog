@@ -19,8 +19,10 @@
 
 = search_form_for @q, :url => url_for(:controller => 'welcome', :action => 'index') do |f|
 
-  = f.label :title_name
+  = f.label :title_cont
   = f.search_field :title_cont
+  = f.label :tags_name_cont
+  = f.search_field :tags_name_cont
   = f.submit
 
 
