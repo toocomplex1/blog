@@ -38,13 +38,14 @@ Rails.application.configure do
   
   #added for uesr authentication features
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   ActionMailer::Base.smtp_settings = 
   {  
    :address              => "smtp.gmail.com",  
    :port                 => 587,  
-   :domain               => "gmail.com",  
-   :user_name            => "jaswantsinghyadav007@gmail.com",  
-   :password             => "",  
+   :domain               => "gmail.com",
+   :user_name            => "fake1234qwer@gmail.com",
+   :password             => "qwerty1@",
    :authentication       => "plain"
    # :enable_starttls_auto => true # I don't have this, but it should work anyway 
  }

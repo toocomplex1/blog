@@ -16,11 +16,14 @@
 
 = javascript_include_tag "application"
  
-
-
-
 .add-article-container
   = link_to 'Add a New article', new_article_path, class: "btn btn-primary"
+.i.fa.fa-search
+= search_form_for @q, :url => url_for(:controller => 'articles', :action => 'index') do |f|
+  
+  .input-append
+    = f.search_field :title_cont , class:"button.btn.sr-btn"
+    = f.submit 
 
 // to search from collections page also
 = search_form_for @q, :url => url_for(:controller => 'articles', :action => 'index') do |f|
