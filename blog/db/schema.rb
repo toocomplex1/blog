@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627094342) do
+ActiveRecord::Schema.define(version: 20160630170733) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160627094342) do
     t.string   "poster_content_type", limit: 255
     t.integer  "poster_file_size",    limit: 4
     t.datetime "poster_updated_at"
+    t.integer  "user_id",             limit: 4
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160627094342) do
     t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "roles_mask",             limit: 4
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

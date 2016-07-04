@@ -21,6 +21,7 @@ class Article < ActiveRecord::Base
   def should_generate_new_friendly_id?
 		title_changed?
   end
+  belongs_to :user
 
   has_many :comments, dependent: :destroy
   validates :title, presence: true,

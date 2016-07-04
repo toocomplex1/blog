@@ -47,6 +47,9 @@ gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
+#for role based authentication
+gem 'cancancan', '~> 1.10'
+
 #paginate page using bootstrap
 gem 'will_paginate-bootstrap'
 
@@ -70,4 +73,3 @@ group :development do
 
   gem 'rails_best_practices'
 end
-

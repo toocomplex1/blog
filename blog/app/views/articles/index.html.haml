@@ -1,15 +1,15 @@
 %nav.navbar.navbar-inverse
   .container-fluid
-  
-      
     %ul.nav.navbar-nav
+      .navbar-header
+        %a.navbar-brand{:href => "#"}
+        = image_tag('logo1.gif',size: "50")
       %li.active
         = link_to "Home", root_path, method: :get ,class: "btn btn-primary"
       %li.active
         %a{:href => "/articles"} Collections
     %p.navbar-text.navbar-right
-      Signed in as
-      %a.navbar-link{:href => "#"} Mark Otto
+      =current_user.email
     %ul.nav.navbar-nav.navbar-right
       %li.active
         = link_to "Logout", destroy_user_session_path, method: :delete
@@ -18,42 +18,25 @@
  
 .add-article-container
   = link_to 'Add a New article', new_article_path, class: "btn btn-primary"
-.i.fa.fa-search
-= search_form_for @q, :url => url_for(:controller => 'articles', :action => 'index') do |f|
-  
-  .input-append
-    = f.search_field :title_cont , class:"button.btn.sr-btn"
-    = f.submit 
 
 // to search from collections page also
 = search_form_for @q, :url => url_for(:controller => 'articles', :action => 'index') do |f|
-
   = f.label :title_cont
   = f.search_field :title_cont
   = f.label :tags_name_cont
   = f.search_field :tags_name_cont
   = f.submit
 
-%nav.navbar.navbar-inverse
-  .container-fluid
-  
-      
-    %ul.nav.navbar-nav
-      %li.active
-        = sort_link(@q, :created_at) 
-      %li.active
-        = sort_link(@q, :title) 
-      %li.active
-        = sort_link(@q, :title) 
-   
-
-
+= bootstrap_flash
 
 .table-responsive
   %table.table.table-hover
     %tr
-      %th Title
+      %th= sort_link(@q, :title, 'Title', default_order: :asc)
       %th Text
+      %th Tags
+      %th= sort_link(@q, :created_at, 'Created_at', default_order: :asc)
+      %th= sort_link(@q, :updated_at, 'Updated_at', default_order: :asc)
       %th{:colspan => "3"}
     - @articles.each do |article|
       %tr
@@ -66,14 +49,17 @@
         %td
           = article.created_at
         %td
+          = article.updated_at
+        %td
           = link_to 'Show', article_path(article)
         %td
-          = link_to 'Edit', edit_article_path(article)
-
-      
-        %td= link_to 'Destroy', article_path(article), |
-            method: :delete,                          |
-            data: { confirm: 'Are you sure?' }        |
+          - if can? :update, article
+            = link_to 'Edit', edit_article_path(article)
+        %td
+          - if can? :update, article
+            = link_to 'Destroy', article_path(article), |
+                method: :delete,                          |
+                data: { confirm: 'Are you sure?' }        |
 
 .add-article-container
   = will_paginate @articles, renderer: BootstrapPagination::Rails

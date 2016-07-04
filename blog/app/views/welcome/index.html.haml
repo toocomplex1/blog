@@ -1,30 +1,38 @@
 %nav.navbar.navbar-inverse
   .container-fluid
     .navbar-header
+      %a.navbar-brand{:href => "#"}
+      = image_tag('logo1.gif',size: "50")
+    .navbar-header
       %a.navbar-brand{:href => ""} Home
     %ul.nav.navbar-nav
-      %li.active
+      %li.inactive
         %a{:href => "/articles"} Collections
     %p.navbar-text.navbar-right
       Signed in as
-      %a.navbar-link{:href => "#"} Mark Otto
+      =current_user.email
     %ul.nav.navbar-nav.navbar-right
-      %li.active
+      %li.inactive
         = link_to "Logout", destroy_user_session_path, method: :delete
       
 .jumbotron
   %h1 Welcome to toocomplex1 blog!
 
+= bootstrap_flash
+
 //to search from welcome page
-
-= search_form_for @q, :url => url_for(:controller => 'welcome', :action => 'index') do |f|
-
-  = f.label :title_cont
-  = f.search_field :title_cont
-  = f.label :tags_name_cont
-  = f.search_field :tags_name_cont
-  = f.submit
-
+= search_form_for([@q],:url => url_for(:controller => 'welcome', :action => 'index',:html => { :class => "form-horizontal" })) do |f|
+  .form-group
+    = f.label :title_cont, :class => 'control-label col-md-4'
+    .col-lg-5
+      = f.search_field :title_cont, :class => 'form-control'
+  .form-group
+    = f.label :tags_name_cont, :class => 'control-label col-md-4'
+    .col-lg-5
+      = f.search_field :tags_name_cont, :rows => '5', :id => 'area1', :class => 'form-control'
+  .form-group
+    .col-lg-offset-0.col-lg-5
+      = f.submit :class => 'btn btn-success'
 
 .table-responsive
   %table.table.table-hover
@@ -45,9 +53,7 @@
           = link_to 'Show', article_path(article)
         %td
           = link_to 'Edit', edit_article_path(article)
-
-      
-        %td= link_to 'Destroy', article_path(article), |
+        %td
+          = link_to 'Destroy', article_path(article), |
             method: :delete,                          |
             data: { confirm: 'Are you sure?' }        |
-

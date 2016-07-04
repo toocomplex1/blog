@@ -30,3 +30,4 @@ development:
   pool: 5
   username: root
   password: <%= ENV['PASSWORD'] %>
+  
