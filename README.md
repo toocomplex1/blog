@@ -51,9 +51,9 @@ rake db:migrate
 Commands for running server
 rails server
 
-friendly_id used : for url that are easy to understood
-twitter-bootstrap-rails : for using bootstrap feature 
-will_paginate : for pagination
-paperclip : for image upload associated with particular article
-cancancan : for user based authentication
-ransack : for searching
+friendly_id used : for url that are easy to understood</br>
+twitter-bootstrap-rails : for using bootstrap feature </br>
+will_paginate : for pagination</br>
+paperclip : for image upload associated with particular article</br>
+cancancan : for user based authentication</br>
+ransack : for searching</br>
