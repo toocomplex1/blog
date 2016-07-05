@@ -15,41 +15,41 @@ Copy this to config/database.yml
 # dont forgot to run bundle install 
 # gem 'mysql2' 
 
-adapter: mysql2
-encoding: utf8
-reconnect: false
-database: blog_development
-pool: 5
-username: --DB User --
-password: --Your Password --
-socket: /var/run/mysqld/mysqld.sock
-# Warning: The database defined as “test” will be erased and # re-generated from your development database when you run “rake”. # Do not set this db to the same as development or production. test:
+adapter: mysql2</br>
+encoding: utf8</br>
+reconnect: false</br>
+database: blog_development</br>
+pool: 5</br>
+username: --DB User --</br>
+password: --Your Password --</br>
+socket: /var/run/mysqld/mysqld.sock</br>
+# Warning: The database defined as “test” will be erased and # re-generated from your development database when you run</br> “rake”. # Do not set this db to the same as development or production. test:</br>
 
-adapter: mysql2
-encoding: utf8
-reconnect: false
-database: blog_test
-pool: 5
-username: --DB User --
-password: --Your Password --
-socket: /var/run/mysqld/mysqld.sock
-production:
+adapter: mysql2</br>
+encoding: utf8</br>
+reconnect: false</br>
+database: blog_test</br>
+pool: 5</br>
+username: --DB User --</br>
+password: --Your Password --</br>
+socket: /var/run/mysqld/mysqld.sock</br>
+production:</br>
 
-adapter: mysql2
-encoding: utf8
-reconnect: false
-database: blog_production
-pool: 5
-username: --DB User --
-password: --Your Password --
-socket: /var/run/mysqld/mysqld.sock
+adapter: mysql2</br>
+encoding: utf8</br>
+reconnect: false</br>
+database: blog_production</br>
+pool: 5</br>
+username: --DB User --</br>
+password: --Your Password --</br>
+socket: /var/run/mysqld/mysqld.sock</br>
 
-Commands for database creation
-rake db:create
-rake db:migrate
+Commands for database creation</br>
+rake db:create</br>
+rake db:migrate</br>
 
-Commands for running server
-rails server
+Commands for running server</br>
+rails server</br>
 
 friendly_id used : for url that are easy to understood</br>
 twitter-bootstrap-rails : for using bootstrap feature </br>
