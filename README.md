@@ -3,13 +3,13 @@ Simple Rails Blog Application built on Ruby on Rails Framework
 This is stage one of the simple rails blog .
 
 Install Rails</br>
-Install mySQL
-Clone this repoistory
+Install mySQL</br>
+Clone this repoistory</br>
 
 Copy this to config/database.yml
-
-# MySQL. Versions 4.1 and 5.0 are recommended. 
-#  Install the MYSQL driver 
+# Rails version 4.2.6  
+# MySQL. Versions 5.7.11 
+# Install the MYSQL driver 
 # gem install mysql2 
 # Ensure the MySQL gem is defined in your Gemfile 
 # dont forgot to run bundle install 
