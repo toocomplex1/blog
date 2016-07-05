@@ -35,6 +35,20 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  
+  #added for uesr authentication features
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  ActionMailer::Base.smtp_settings = 
+  {  
+   :address              => "smtp.gmail.com",  
+   :port                 => 587,  
+   :domain               => "gmail.com",
+   :user_name            => ENV['fake'],
+   :password             => ENV['PASSWORDfake']  ,
+   :authentication       => "plain"
+   # :enable_starttls_auto => true # I don't have this, but it should work anyway 
+ }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

@@ -1,18 +1,33 @@
 class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "akash", password: "secret", except: [:index, :show]
-
+  load_and_authorize_resource
   #just checking
 
   def index
-    @articles = Article.all
+
+    #without pagination
+    #@articles = Article.all
+
+    #for pagination it is fetching pagination one by one
+    #@articles = Article.paginate(:page => params[:page], :per_page => 3 )
+    
+    #for searching articles by name from collection page also
+    @q = Article.ransack(params[:q])
+    # @articles = @q.result(distinct: true).page(params[:page]).per_page(3)
+    @articles = @q.result(distinct: true).includes(:tags).page(params[:page]).per_page(3)
+    # or, use an explicit "per page" limit:
+    #Post.paginate(:page => params[:page], :per_page => 30)
+
+    ## render page links in the view: 
   end
 
   def show
     @article = Article.find(params[:id])
+    authorize! :read, @article
   end
 
   def new
-  @article = Article.new
+    @article = current_user.articles.build
   end
 
   def destroy
@@ -27,14 +42,14 @@ class ArticlesController < ApplicationController
   end
  
   def create
-  @article = Article.new(article_params)
- 
-  if @article.save
-    redirect_to @article
-  else
-    render 'new'
+    @article = current_user.articles.build(article_params)
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
     end
   end
+
   def update
   @article = Article.find(params[:id])
     if @article.update(article_params)
@@ -46,6 +61,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :tag_list,:poster)
   end
 end

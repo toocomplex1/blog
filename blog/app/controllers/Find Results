@@ -1,0 +1,15 @@
+Searching 503 files for "kashmishra30493@gmail.co"
+
+/Users/akash/Desktop/ruby_basic/blog/blog/app/mailers/my_mailer.rb:
+    1  class MyMailer < Devise::Mailer   
+    2:   default :from => 'akashmishra30493@gmail.com' 
+    3    helper :application # gives access to all helpers defined within `application_helper`.
+    4    include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
+
+/Users/akash/Desktop/ruby_basic/blog/blog/db/development.sqlite3:
+    <binary>
+
+/Users/akash/Desktop/ruby_basic/blog/blog/log/development.log:
+    <binary>
+
+156 matches across 3 files

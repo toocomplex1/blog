@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title DeviseBootstrapViews
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{:href => "#"}
+            = image_tag('logo1.gif',size: "50")
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %h2 Sign up
+        %div
+          %div
+            %br/
+            %br/
+            %br/
+            %br/
+            %br/
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+            = devise_error_messages!
+            .form-group
+              = f.label :email, class: "col-sm-2 control-label"
+              .col-sm-6
+                = f.email_field :email, class: "form-control"
+            .form-group
+              = f.label :password, class: "col-sm-2 control-label"
+              .col-sm-6
+                = f.password_field :password, autocomplete: "off", class: "form-control"
+            .form-group
+              = f.label :password_confirmation, class: "col-sm-2 control-label"
+              .col-sm-6
+                = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+            .form-group
+              .col-sm-offset-2.col-sm-6
+                = f.submit "Sign up", class: "btn btn-primary"
+            .form-group
+              .col-sm-offset-2.col-sm-6
+                = render "users/shared/links"

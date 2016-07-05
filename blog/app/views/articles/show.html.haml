@@ -1,12 +1,34 @@
-.container-fluid
-  .well
-    .blog-header
-      %h1.blog-title= @article.title
-      %p.lead.blog-description= @article.text
-      %h5 Comments
-      = render @article.comments
-      %h5 Add a comment:
-      = render 'comments/form'
-      = link_to 'Edit', edit_article_path(@article)
-      |
-      \#{link_to 'Back', articles_path}
+.thumbnail
+  .caption-full
+    %h4
+      = @article.title |
+      %span.pull-right
+        - if can? :update, @article
+          = link_to 'Edit', edit_article_path(@article), :class => 'btn btn-primary' 
+    %hr/
+    = image_tag(@article.poster.url, :class => 'article-img img-responsive')
+    %hr/   
+    %p= @article.text.html_safe
+  %p.pull-right
+    %span.glyphicon.glyphicon-tags
+    %span.btn.btn-default.btn-xs= raw @article.tags.map { |t| link_to t.name, tag_path(t.id) }.join(' | ')
+  .ratings
+    %p
+      = time_ago_in_words(@article.created_at)
+      ago
+.well
+  .text-right
+    %h4 Comments
+  %hr/
+  = render @article.comments
+.panel.panel-default
+  .panel-heading.caption-full
+    %p Leave a Comment
+  .panel-body
+    = render 'comments/form'
+      
+= link_to 'Back', articles_path, :class => 'btn btn-default'
+
+%span.pull-right
+  Written by 
+  =current_user.email

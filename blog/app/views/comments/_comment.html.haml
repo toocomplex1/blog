@@ -9,7 +9,8 @@
         \:
         \#{comment.body}
     %p
-      = link_to 'Destroy Comment', [comment.article, comment], |
-        method: :delete,                                       |
-        data: { confirm: 'Are you sure?' }                     |
-        
+      - if can? :manage, comment
+        = link_to 'Destroy Comment', [comment.article, comment], |
+          method: :delete,                                       |
+          data: { confirm: 'Are you sure?' }                     |
+          
