@@ -2,7 +2,7 @@ Simple Rails Blog Application built on Ruby on Rails Framework
 
 This is stage one of the simple rails blog .
 
-Install Rails
+Install Rails</br>
 Install mySQL
 Clone this repoistory
 
